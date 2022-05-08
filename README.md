@@ -33,4 +33,4 @@ builder.save("gauss_2d.stl")
 
 ## Output:
 You can view .stl files with any 3d viewer. The example above creates an stl file similar to this:
-![Screenshot of a view of a .stl file of a two-dimension Gaussian distribution.](https://github.com/lhalve/np2stl/tree/main/resources/example_stl.png?raw=true)
+![Screenshot of a view of a .stl file of a two-dimension Gaussian distribution.](https://github.com/lhalve/np2stl/blob/main/resources/example_stl.PNG?raw=true)
