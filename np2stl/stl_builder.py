@@ -281,7 +281,7 @@ class STLBuilder(object):
                         values,
                         x_values,
                         y_values,
-                        style="pyramdid",
+                        style="pyramid",
                         log=False,
                         aspect_ratio=1.33):
         """Create a 3d object from points on a regular 2d grid.
