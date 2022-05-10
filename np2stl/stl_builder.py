@@ -68,6 +68,45 @@ class STLBuilder(object):
         self.faces = new_faces
         self.vertices = np.array(cleaned_vertices)
 
+    def __clean_z_values(self,
+                         values,
+                         replace_value="min"):
+        """Remove any inf and nan values from the values.
+
+        Replaces any inf or nan values with either the
+        minimum or maximum of the values, or with a fixed value.
+
+        Parameters
+        ----------
+        values : np.array
+            Values to clean
+        replace_value : str or float, optional
+            The value to replace inf and nan with.
+            Can be one of ["min", "max"] or a fixed float.
+            Default 'min'.
+
+        Raises
+        ------
+        ValueError
+            If an invalid `replace_value` is given.
+
+        """
+        # take care of converting the replace value to a float
+        if type(replace_value) == float:
+            pass
+        elif replace_value in ["min", "max"]:
+            if replace_value == "min":
+                replace_value = np.min(values)
+            elif replace_value == "max":
+                replace_value = np.max(values)
+        else:
+            raise ValueError("Invalid <replace_value> <{val}>".format(val=str(replace_value)))
+
+        # we build a map of where to replace
+        # start with inf
+        values[np.isinf(values)] = replace_value
+        values[np.isnan(values)] = replace_value
+
     def save(self,
              filename,
              cleanup=False):
@@ -388,6 +427,8 @@ class STLBuilder(object):
         samples_y = (samples_y - samples_y[0]) / (samples_y[-1] - samples_y[0])
 
         # we can take care of the values now
+        # clean any invalid numbers
+        self.__clean_z_values(values)
         # take the log if we need to
         if log:
             values = np.log10(np.clip(values, np.min(values[np.nonzero(values)]), None))
