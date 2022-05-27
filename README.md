@@ -6,7 +6,13 @@ Create 3D STL files from numpy data
 ```bash
 git clone git@github.com:lhalve/np2stl.git
 ```
-2. Add this repository to your PYTHONPATH environment variable
+2. Install dependencies
+```bash
+cd np2stl
+pip3 install -r requirements.txt
+```
+
+3. Add this repository to your PYTHONPATH environment variable
 ```bash
 cd np2stl
 export PYTHONPATH="${PYTHONPATH}:$PWD"
