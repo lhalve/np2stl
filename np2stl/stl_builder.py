@@ -170,7 +170,7 @@ class STLBuilder(object):
         self._add_triangle(points[1:])
 
     def _add_base(self,
-                  base_height=0.02,
+                  base_height=0.01,
                   xmin=0.,
                   xmax=1.,
                   ymin=0.,
@@ -206,7 +206,7 @@ class STLBuilder(object):
                         ymax=ymax)
 
     def _add_baseplate(self,
-                       baseplate_height=0.02,
+                       baseplate_height=0.01,
                        xmin=0,
                        xmax=1,
                        ymin=0,
@@ -235,7 +235,7 @@ class STLBuilder(object):
                                   [xmax, ymax, -baseplate_height]])
 
     def _add_brims(self,
-                   baseplate_height=0.02,
+                   baseplate_height=0.01,
                    xmin=0,
                    xmax=1,
                    ymin=0,
